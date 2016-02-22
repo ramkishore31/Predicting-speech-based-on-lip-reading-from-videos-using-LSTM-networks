@@ -1,14 +1,10 @@
 import cv2
 import os
-cnt1 = 1
-cnt2 = 1
 
 speaker_list = next(os.walk('/Users/ramkishore31/Neural Networks/final_project/dataset/lowquality_videos/'))[1]
 for speaker in speaker_list:
     print "Extracting frames for speaker ",cnt1
     for filename in os.listdir('/Users/ramkishore31/Neural Networks/final_project/dataset/lowquality_videos/'+str(speaker)+'/'):
-        if cnt2 % 25 == 0:
-            print cnt2," videos done for ",speaker
         if filename.endswith('.mpg'):
             frame_count = 1
             vc = cv2.VideoCapture('/Users/ramkishore31/Neural Networks/final_project/dataset/lowquality_videos/'+str(speaker)+'/' + filename)
@@ -29,5 +25,3 @@ for speaker in speaker_list:
                 frame_count = frame_count + 1
                 cv2.waitKey(1)
             vc.release()
-        cnt2 += 1
-    cnt1 += 1
